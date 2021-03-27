@@ -1,26 +1,49 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    Client.checkForName(formText)
+    let newUrl = document.getElementById('formUrl').value;
+    const errorUrl = document.getElementById('errorUrl');
+    if (Client.checkForUrl(newUrl))  {
 
-    console.log("::: Form Submitted :::")
-    fetch('http://localhost:8081/test')
+        
+    fetch('http://localhost:8081/add', {
+    method: 'POST',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ formUrl }),
+})
     .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
+    .then(res => {updateUI(res);
+    
     })
+} else {
+    console.log(errorUrl, "URL invalid")
+
+}
+console.log("Form Submitted")
+    }
+
+    async function updateUI(res) {
+
+    document.querySelector('#result').innerText = 'Confidence = ' + res.confidence + '%';
+    document.querySelector('#subjectivity').innerText = res.subjectivity;
+    document.querySelector('#score').innerText = `Polarity score: ${score(
+        res.score_tag
+      )}`;
 }
 
-/* fetch('http://localhost:8081/test')
- .then(res => {
-     return res.json()
- })
- .then(function(data) {
-     document.getElementById('results').innerHTML = data.message
- })
- */
+export const score = (score_tag) => {
+    if (score_tag === "P+" || score_tag === "P") {
+        return "Positive";
+    } else if (score_tag === "N+" || score_tag === "N") {
+        return "Negative";
+    } else if (score_tag === "NEU") {
+        return "Neutral";
+    } else {
+        return "Non Sentimental";
+    }
+};
 
 
 export { handleSubmit }

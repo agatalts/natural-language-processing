@@ -4,15 +4,15 @@ import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
-import { checkForName } from './js/nameChecker'
+import { checkForUrl } from './js/urlChecker'
 import { handleSubmit } from './js/formHandler'
 
 export {
- checkForName,
+ checkForUrl,
  handleSubmit
 }
 
-console.log(checkForName);
+console.log(checkForUrl);
 
 alert("I EXIST")
-console.log("CHANGE!!");
+
