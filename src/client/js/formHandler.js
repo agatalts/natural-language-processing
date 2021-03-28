@@ -2,6 +2,7 @@ function handleSubmit(event) {
     event.preventDefault()
 
     let newUrl = document.getElementById('formUrl').value;
+    console.log(newUrl);
     const errorUrl = document.getElementById('errorUrl');
     if (Client.checkForUrl(newUrl))  {
 
@@ -22,6 +23,7 @@ function handleSubmit(event) {
 
 }
 console.log("Form Submitted")
+
     }
 
     async function updateUI(res) {
