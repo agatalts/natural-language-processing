@@ -12,11 +12,11 @@ function handleSubmit(event) {
     cache: 'no-cache',
     credentials: 'same-origin',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({ formUrl }),
+    body: JSON.stringify({ newUrl }),
 })
     .then(res => res.json())
     .then(res => {updateUI(res);
-    
+    console.log(res);
     })
 } else {
     console.log(errorUrl, "URL invalid")
@@ -28,24 +28,30 @@ console.log("Form Submitted")
 
     async function updateUI(res) {
 
-    document.querySelector('#result').innerText = 'Confidence = ' + res.confidence + '%';
-    document.querySelector('#subjectivity').innerText = res.subjectivity;
-    document.querySelector('#score').innerText = `Polarity score: ${score(
+    document.querySelector('#confidence').innerText = 'Confidence: ' + res.confidence + '%';
+    document.querySelector('#subjectivity').innerText = 'Subjectivity: ' + res.subjectivity;
+    document.querySelector('#irony').innerText = 'Irony: ' + res.irony;
+    document.querySelector('#polarity').innerText = `Polarity: ${score(
         res.score_tag
       )}`;
 }
 
 export const score = (score_tag) => {
-    if (score_tag === "P+" || score_tag === "P") {
-        return "Positive";
-    } else if (score_tag === "N+" || score_tag === "N") {
-        return "Negative";
+    if (score_tag === "P+") {
+        return "STRONG POSITIVE";
+    } else if (score_tag === "P") {
+        return "POSITIVE";
+    } else if (score_tag === "N") {
+        return "NEGATIVE";
+    } else if (score_tag === "N+") {
+        return "STRONG NEGATIVE";
     } else if (score_tag === "NEU") {
-        return "Neutral";
+        return "NEUTRAL";
     } else {
-        return "Non Sentimental";
+        return "WITHOUT SENTIMENT";
     }
 };
+
 
 
 export { handleSubmit }

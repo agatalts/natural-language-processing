@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+const fetch = require('node-fetch');
 dotenv.config();
 console.log(`Your API key is ${process.env.API_KEY}`);
 
@@ -25,7 +26,7 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
-// designates what port the app will listen to for incoming requests
+
 app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
@@ -36,12 +37,13 @@ app.get('/test', function (req, res) {
 
 
 app.post("/add", async(req, res) => {
-    const apiData = await fetch(`${apiUrl}${apiKey}&lang=auto&url=${req.body.newUrl}`, 
+    const apiResp = await fetch(`${apiUrl}${apiKey}&lang=auto&url=${req.body.newUrl}`, 
     {method: 'POST'});
 
     try {
-        const response = await resp.json();
-        requestAnimationFrame.send(response)
+        const response = await apiResp.json();
+        console.log(response)
+        res.send(response)
     }
     catch(error) {
         console.log("error", error);
