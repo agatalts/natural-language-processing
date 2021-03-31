@@ -4,9 +4,8 @@ function handleSubmit(event) {
     let newUrl = document.getElementById('formUrl').value;
     console.log(newUrl);
     const errorUrl = document.getElementById('errorUrl');
-    if (Client.checkForUrl(newUrl))  {
 
-        
+    if (Client.checkForUrl(newUrl))  {
     fetch('http://localhost:8081/add', {
     method: 'POST',
     cache: 'no-cache',
@@ -16,18 +15,17 @@ function handleSubmit(event) {
 })
     .then(res => res.json())
     .then(res => {updateUI(res);
+        console.log("Form Submitted")
     console.log(res);
     })
 } else {
-    console.log(errorUrl, "URL invalid")
+    console.log("URL invalid");
+    errorUrl.innerText ='URL invalid, please try again';
 
 }
-console.log("Form Submitted")
-
     }
 
     async function updateUI(res) {
-
     document.querySelector('#confidence').innerText = 'Confidence: ' + res.confidence + '%';
     document.querySelector('#subjectivity').innerText = 'Subjectivity: ' + res.subjectivity;
     document.querySelector('#irony').innerText = 'Irony: ' + res.irony;
@@ -51,7 +49,5 @@ export const score = (score_tag) => {
         return "WITHOUT SENTIMENT";
     }
 };
-
-
 
 export { handleSubmit }
