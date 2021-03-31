@@ -9,11 +9,8 @@
     <body>
 
         <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
+            <div class="header">
+                Analyze the sentiment of any website content using <a href="https://www.meaningcloud.com/" target=_blank>MeaningCloud</a>!
             </div>
         </header>
 
@@ -21,22 +18,22 @@
             <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
                     <input id="formUrl" type="text" name="input" value="" placeholder="Enter URL">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                    <input id="submit" type="submit" name="" value="Submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
                 <div class="error_url" id="errorUrl"></div>
             </section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="confidence"></div>
-                <div id="subjectivity"></div>
-                <div id="irony"></div>
-                <div id="polarity"></div>
+                <div id="results">Results:</div>
+                <div class="result" id="confidence"></div>
+                <div class="result" id="subjectivity"></div>
+                <div class="result" id="irony"></div>
+                <div class="result" id="polarity"></div>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <a href="https://github.com/agatalts/project4" target="_blank">Open-source code</a> by Agata Latos
         </footer>
 
     </body>
