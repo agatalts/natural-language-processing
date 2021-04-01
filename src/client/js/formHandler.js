@@ -4,6 +4,7 @@ function handleSubmit(event) {
     let newUrl = document.getElementById('formUrl').value;
     console.log(newUrl);
     const errorUrl = document.getElementById('errorUrl');
+    errorUrl.innerText ='';
 
     if (Client.checkForUrl(newUrl))  {
     fetch('http://localhost:8081/add', {
