@@ -14,5 +14,5 @@ export {
 
 console.log(checkForUrl);
 
-alert("I EXIST")
+
 
