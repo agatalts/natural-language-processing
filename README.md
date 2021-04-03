@@ -23,7 +23,7 @@ You need your API_KEY to make API request. You can find the API [here](https://w
 npm run build-prod
 ```
 
-Run this command in the project directory to to build the app
+Run this command in the project directory to build the app
 
 ```
 npm start
