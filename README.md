@@ -15,7 +15,7 @@ The goal of this project is to practice with:
 
 This app is using MeaningCloud API to run Natural Language Processing (NLP) on articles or blogs found on other websites. NLP is the ability of an application to understand the human language, written or oral.
 
-You need your API_KEY to make API request. You can find the API [here](https://www.meaningcloud.com/developer/sentiment-analysishere). Once you create an account with MeaningCloud, you will be given a license key to start using the API.
+You need your API_KEY to make API request. You can find the API [here](https://www.meaningcloud.com/developer/sentiment-analysis). Once you create an account with MeaningCloud, you will be given a license key to start using the API.
 
 ## Start the app
 
